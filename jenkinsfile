@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-             git 'https://github.com/Sushmaa123/CI-CD-Project.git'
+             git 'https://github.com/githubvarun22/CI-CD-PROJECT.git'
             }
         }
          stage('compile') {
@@ -21,9 +21,9 @@ pipeline {
          stage('code analysis') {
             steps {
               withSonarQubeEnv('sonar-server') {
-               sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=CI-CD-Project \
+               sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=CI-CD-PROJECT \
                -Dsonar.java.binaries=. \
-               -Dsonar.projectKey=CI-CD-Project'''
+               -Dsonar.projectKey=CI-CD-PROJECT'''
               }
             }
         }
@@ -45,8 +45,8 @@ pipeline {
             steps {
              script {
                 withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                    sh 'docker tag spring-boot sushmagowda321/spring-boot'
-                    sh 'docker push sushmagowda321/spring-boot'
+                    sh 'docker tag spring-boot varunkumar22/spring-boot'
+                    sh 'docker push varunkumar22/spring-boot'
                   }
               }
             }
