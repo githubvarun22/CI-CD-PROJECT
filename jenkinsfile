@@ -35,7 +35,7 @@ pipeline {
          stage('docker build') {
             steps {
              script {
-                 withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                 withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                     sh 'docker build -t spring-boot .'
                   }
               }
@@ -44,7 +44,7 @@ pipeline {
          stage('docker push') {
             steps {
              script {
-                withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                     sh 'docker tag spring-boot varunkumar22/spring-boot'
                     sh 'docker push varunkumar22/spring-boot'
                   }
@@ -54,7 +54,7 @@ pipeline {
         stage('docker compose') {
             steps {
              script {
-                 withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                 withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                     sh 'docker-compose up -d'
                   }
               }
