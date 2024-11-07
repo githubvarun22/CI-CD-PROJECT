@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-             git 'https://github.com/githubvarun22/java-Springboot.git'
+             git branch: 'main', url: 'https://github.com/githubvarun22/Java-Springboot'
             }
         }
          stage('compile') {
